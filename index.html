@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导师遴选和资格审核</title>
+    <style>
+        /* 页面通用样式 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        /* 表单样式 */
+        form {
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* 提交按钮的响应式设计 */
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>导师管理系统</h1>
+
+        <h2>导师遴选</h2>
+        <form action="/select_mentor" method="post">
+            <label for="mentor_id">导师 ID:</label>
+            <input type="number" id="mentor_id" name="mentor_id" required><br>
+
+            <label for="mentor_type">导师类型:</label>
+            <select id="mentor_type" name="mentor_type">
+                <option value="学术型硕士生导师">学术型硕士生导师</option>
+                <option value="专业学位型硕士生导师">专业学位型硕士生导师</option>
+                <option value="博士生导师">博士生导师</option>
+            </select><br>
+
+            <button type="submit">提交</button>
+        </form>
+
+        <h2>导师资格审核</h2>
+        <form action="/verify_mentor" method="post">
+            <label for="verify_mentor_id">导师 ID:</label>
+            <input type="number" id="verify_mentor_id" name="verify_mentor_id" required><br>
+
+            <label for="admission_rights">是否具备招生资格:</label>
+            <select id="admission_rights" name="admission_rights">
+                <option value="1">是</option>
+                <option value="0">否</option>
+            </select><br>
+
+            <button type="submit">提交</button>
+        </form>
+    </div>
+</body>
+</html>

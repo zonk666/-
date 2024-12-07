@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>招生台账</title>
+    <style>
+        /* 页面背景和字体设置 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* 容器样式 */
+        .container {
+            width: 80%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 标题样式 */
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* 表格样式 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        /* 表格行 hover 样式 */
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* 调整页面响应式设计 */
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>招生台账</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>学科编号</th>
+                    <th>学科方向</th>
+                    <th>导师身份</th>
+                    <th>总招生数</th>
+                    <th>推免数</th>
+                    <th>初试科目</th>
+                    <th>复试科目</th>
+                    <th>招生资格</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                <tr>
+                    <td>{{ record.disciplineid }}</td>
+                    <td>{{ record.direction }}</td>
+                    <td>{{ record.mentoridentity }}</td>
+                    <td>{{ record.totalquota }}</td>
+                    <td>{{ record.additionalquota }}</td>
+                    <td>{{ record.preliminarysubjects }}</td>
+                    <td>{{ record.reexaminationsubjects }}</td>
+                    <td>{{ '有' if record.hasadmissionrights == 1 else '无' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
